@@ -7,3 +7,4 @@ exampleapp/fabric.properties
 local.properties
 piwik-pro-sdk-android.iml
 piwik-pro-sdk-demo-android.iml
+.DS_Store
