@@ -1,0 +1,9 @@
+# Created by .ignore support plugin (hsz.mobi)
+.gradle/
+.idea/
+build/
+exampleapp/exampleapp.iml
+exampleapp/fabric.properties
+local.properties
+piwik-pro-sdk-android.iml
+piwik-pro-sdk-demo-android.iml

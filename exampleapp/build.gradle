@@ -1,0 +1,60 @@
+
+apply plugin: 'com.android.application'
+
+apply plugin: 'android-apt'
+
+android {
+    compileSdkVersion project.ext.globalCompileSdkVersion
+    buildToolsVersion project.ext.globalBuildToolsVersion
+
+    defaultConfig {
+        applicationId "com.piwikpro.demo"
+        minSdkVersion project.ext.globalMinSdkVersion
+        targetSdkVersion project.ext.globalTargetSdkVersion
+        versionCode 14
+        versionName "1.0.1"
+    }
+
+    signingConfigs {
+        debug {
+            storeFile file('debug.keystore')
+            storePassword "android"
+            keyAlias "androiddebugkey"
+            keyPassword "android"
+        }
+        release {
+            storeFile file('debug.keystore')
+            storePassword "android"
+            keyAlias "androiddebugkey"
+            keyPassword "android"
+        }
+        config {
+            keyAlias 'androiddebugkey'
+            keyPassword 'android'
+            storeFile file('debug.keystore')
+            storePassword 'android'
+        }
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.config
+        }
+        debug {
+            testCoverageEnabled = false
+        }
+    }
+}
+
+dependencies {
+    repositories {
+        jcenter()
+    }
+    compile "com.android.support:appcompat-v7:${supportLibVersion}"
+    compile "com.android.support:support-v4:${supportLibVersion}"
+    compile 'com.jakewharton:butterknife:8.4.0'
+    compile 'pro.piwik.sdk:piwik-sdk:1.0.0'
+    apt 'com.jakewharton:butterknife-compiler:8.4.0'
+}

@@ -1,0 +1,253 @@
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingBottom="@dimen/activity_vertical_margin"
+        android:paddingLeft="@dimen/activity_horizontal_margin"
+        android:paddingRight="@dimen/activity_horizontal_margin"
+        android:paddingTop="@dimen/activity_vertical_margin"
+        tools:context=".DemoActivity">
+
+        <Button
+            android:id="@+id/trackMainScreensViewButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:text="@string/track_screens_button_label" />
+
+        <Button
+            android:id="@+id/trackMainScreenViewButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignEnd="@+id/trackMainScreensViewButton"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_alignRight="@+id/trackMainScreensViewButton"
+            android:layout_below="@+id/trackMainScreensViewButton"
+            android:text="@string/track_screen_vew_button_label" />
+
+        <Button
+            android:id="@+id/trackCustomVarsButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignEnd="@+id/trackMainScreenViewButton"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_alignRight="@+id/trackMainScreenViewButton"
+            android:layout_below="@+id/trackMainScreenViewButton"
+            android:text="Track Custom Vars" />
+
+        <Button
+            android:id="@+id/trackEventsButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignEnd="@+id/trackCustomVarsButton"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_alignRight="@+id/trackCustomVarsButton"
+            android:layout_below="@+id/trackCustomVarsButton"
+            android:text="Track Events" />
+
+        <Button
+            android:id="@+id/trackCustomDimenButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignEnd="@+id/trackEventsButton"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_alignRight="@+id/trackEventsButton"
+            android:layout_below="@+id/trackEventsButton"
+            android:text="Track Custom Dimensions" />
+
+        <Button
+            android:id="@+id/trackDownloadsButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignEnd="@+id/trackCustomDimenButton"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_alignRight="@+id/trackCustomDimenButton"
+            android:layout_below="@+id/trackCustomDimenButton"
+            android:text="Track Downloads" />
+
+        <Button
+            android:id="@+id/trackOutlinksButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignEnd="@+id/trackDownloadsButton"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_alignRight="@+id/trackDownloadsButton"
+            android:layout_below="@+id/trackDownloadsButton"
+            android:text="Track Outlinks" />
+
+        <LinearLayout
+            android:id="@+id/trackSearchLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignEnd="@+id/trackOutlinksButton"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_alignRight="@+id/trackOutlinksButton"
+            android:layout_below="@+id/trackOutlinksButton"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/trackSearchButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Track Search" />
+
+            <EditText
+                android:id="@+id/searchText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/trackContentLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignEnd="@+id/trackSearchLayout"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_alignRight="@+id/trackSearchLayout"
+            android:layout_below="@+id/trackSearchLayout"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="16dp"
+                android:text="Track Content Impression" />
+
+            <Button
+                android:id="@+id/trackContentButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#ff33b5e5" />
+
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/raiseExceptionButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignEnd="@+id/trackContentLayout"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_alignRight="@+id/trackContentLayout"
+            android:layout_below="@+id/trackContentLayout"
+            android:text="Track Exception" />
+
+        <Button
+            android:id="@+id/trackGoalButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/raiseExceptionButton"
+            android:text="Track Goal" />
+
+        <EditText
+            android:id="@+id/goalTextEditView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/trackGoalButton"
+            android:layout_below="@+id/raiseExceptionButton"
+            android:layout_marginRight="0dp"
+            android:layout_toEndOf="@+id/trackGoalButton"
+            android:layout_toLeftOf="@+id/textView"
+            android:layout_toRightOf="@+id/trackGoalButton"
+            android:layout_toStartOf="@+id/textView"
+            android:editable="true"
+            android:ems="10"
+            android:inputType="number"
+            android:text="1" />
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/goalTextEditView"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_below="@+id/raiseExceptionButton"
+            android:text="$ Revenue"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
+
+        <Button
+            android:id="@+id/addEcommerceItemButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/trackGoalButton"
+            android:text="Add Ecommerce Item" />
+
+        <Button
+            android:id="@+id/trackEcommerceCartUpdateButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/addEcommerceItemButton"
+            android:text="Track Ecommerce Cart Update" />
+
+        <Button
+            android:id="@+id/completeEcommerceOrderButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/trackEcommerceCartUpdateButton"
+            android:text="Track Ecommerce Order" />
+
+        <Button
+            android:id="@+id/socialInteractionButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/completeEcommerceOrderButton"
+            android:text="Social Interaction" />
+
+        <Button
+            android:id="@+id/campaignButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/socialInteractionButton"
+            android:text="Piwik Campaign" />
+
+        <Button
+            android:id="@+id/dataManagerButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/campaignButton"
+            android:text="Data Manager" />
+
+        <Button
+            android:id="@+id/checkAudienceButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/dataManagerButton"
+            android:text="Check Audience Membership" />
+
+    </RelativeLayout>
+</ScrollView>
+
