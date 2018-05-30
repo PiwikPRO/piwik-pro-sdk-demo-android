@@ -11,6 +11,7 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
@@ -18,6 +19,8 @@ import android.widget.EditText;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import pro.piwik.sdk.dispatcher.Packet;
 import pro.piwik.sdk.extra.PiwikApplication;
@@ -81,7 +84,7 @@ public class SettingsActivity extends Activity {
         EditText input = (EditText) findViewById(R.id.dispatchIntervallInput);
         ((PiwikApplication) getApplication()).getTracker().setDispatchInterval(30000);
         input.setText(Long.toString(
-                ((PiwikApplication) getApplication()).getTracker().getDispatchInterval()/1000
+                ((PiwikApplication) getApplication()).getTracker().getDispatchInterval() / 1000
         ));
         input.addTextChangedListener(
                 new TextWatcher() {
@@ -90,7 +93,7 @@ public class SettingsActivity extends Activity {
                         try {
                             int interval = Integer.valueOf(charSequence.toString().trim());
                             ((PiwikApplication) getApplication()).getTracker()
-                                    .setDispatchInterval(interval/1000);
+                                    .setDispatchInterval(interval / 1000);
                         } catch (NumberFormatException e) {
                             Timber.d("not a number: %s", charSequence.toString());
                         }
@@ -138,6 +141,39 @@ public class SettingsActivity extends Activity {
 
         );
 
+        // host input
+        final EditText inputHost = (EditText) findViewById(R.id.hostInput);
+        inputHost.setText(((DemoApp) getApplication()).getHost());
+
+        //  siteId input
+        final EditText inputSiteId = (EditText) findViewById(R.id.siteIdInput);
+        inputSiteId.setText(((DemoApp) getApplication()).getSiteId());
+
+        // update Host and siteId button
+        Button buttonUpdateHostandSiteId = (Button) findViewById(R.id.updateHostSiteIdBtn);
+        buttonUpdateHostandSiteId.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String host = String.valueOf(inputHost.getText());
+                String siteId = String.valueOf(inputSiteId.getText());
+                if (!checkUrl(host)) {
+                    inputHost.setError("Invalid host pattern");
+                    return;
+                }
+                // todo add siteId check
+                ((DemoApp) getApplication()).setHost(host);
+                ((DemoApp) getApplication()).setSiteId(siteId);
+                ((DemoApp) getApplication()).getNewTracker();
+                refreshUI(SettingsActivity.this);
+
+            }
+        });
+    }
+
+    private boolean checkUrl(String url) {
+        Pattern p = Patterns.WEB_URL;
+        Matcher m = p.matcher(url);
+        return m.matches();
     }
 
     @Override

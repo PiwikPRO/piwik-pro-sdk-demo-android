@@ -1,12 +1,12 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                xmlns:tools="http://schemas.android.com/tools"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:paddingBottom="@dimen/activity_vertical_margin"
-                android:paddingLeft="@dimen/activity_horizontal_margin"
-                android:paddingRight="@dimen/activity_horizontal_margin"
-                android:paddingTop="@dimen/activity_vertical_margin"
-                tools:context="com.piwikpro.demo.SettingsActivity">
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="com.piwikpro.demo.SettingsActivity">
 
     <TableLayout
         android:id="@+id/tableLayout"
@@ -24,7 +24,7 @@
                 android:layout_column="0"
                 android:inputType="number"
                 android:text="Dispatch Interval"
-                android:textAppearance="?android:attr/textAppearanceMedium"/>
+                android:textAppearance="?android:attr/textAppearanceMedium" />
 
             <EditText
                 android:id="@+id/dispatchIntervallInput"
@@ -34,14 +34,14 @@
                 android:width="60dip"
                 android:ems="10"
                 android:inputType="numberSigned"
-                android:text="5"/>
+                android:text="5" />
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_column="2"
                 android:text="(sec)"
-                android:textAppearance="?android:attr/textAppearanceMedium"/>
+                android:textAppearance="?android:attr/textAppearanceMedium" />
         </TableRow>
 
         <TableRow
@@ -55,7 +55,7 @@
                 android:layout_column="0"
                 android:inputType="number"
                 android:text="Session timeout "
-                android:textAppearance="?android:attr/textAppearanceMedium"/>
+                android:textAppearance="?android:attr/textAppearanceMedium" />
 
             <EditText
                 android:id="@+id/sessionTimeoutInput"
@@ -65,14 +65,14 @@
                 android:width="60dip"
                 android:ems="10"
                 android:inputType="numberSigned"
-                android:text="30"/>
+                android:text="30" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_column="2"
                 android:text="(min)"
-                android:textAppearance="?android:attr/textAppearanceMedium"/>
+                android:textAppearance="?android:attr/textAppearanceMedium" />
         </TableRow>
 
         <TableRow
@@ -87,7 +87,7 @@
                 android:layout_column="0"
                 android:layout_span="3"
                 android:checked="false"
-                android:text="Dry Run"/>
+                android:text="Dry Run" />
         </TableRow>
 
         <TableRow
@@ -103,7 +103,7 @@
                 android:layout_column="0"
                 android:layout_span="3"
                 android:checked="false"
-                android:text="Opt Out"/>
+                android:text="Opt Out" />
         </TableRow>
 
         <TableRow
@@ -119,7 +119,7 @@
                 android:layout_column="0"
                 android:layout_span="3"
                 android:checked="false"
-                android:text="Prefixing"/>
+                android:text="Prefixing" />
         </TableRow>
 
         <TableRow
@@ -135,7 +135,46 @@
                 android:layout_column="0"
                 android:layout_span="3"
                 android:checked="false"
-                android:text="Default Custom Vars"/>
+                android:text="Default Custom Vars" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp">
+
+            <EditText
+                android:id="@+id/hostInput"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="host" />
+
+        </TableRow>
+
+        <TableRow
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp">
+
+            <EditText
+                android:id="@+id/siteIdInput"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="site Id" />
+
+        </TableRow>
+
+        <TableRow
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp">
+
+            <Button
+                android:id="@+id/updateHostSiteIdBtn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="update Host and Site Id" />
+
         </TableRow>
 
     </TableLayout>
@@ -148,10 +187,9 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:layout_alignRight="@+id/tableLayout"
-        android:visibility="gone"
         android:layout_below="@+id/tableLayout"
         android:layout_column="0"
         android:layout_gravity="bottom"
         android:text="Auto track activities"
-        />
+        android:visibility="gone" />
 </RelativeLayout>
