@@ -26,8 +26,8 @@ android {
         applicationId "com.piwikpro.demo"
         minSdkVersion project.ext.globalMinSdkVersion
         targetSdkVersion project.ext.globalTargetSdkVersion
-        versionCode 14
-        versionName "1.0.1"
+        versionCode 15
+        versionName "1.1.0"
     }
 
     signingConfigs {
