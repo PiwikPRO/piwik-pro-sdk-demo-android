@@ -1,5 +1,20 @@
+buildscript {
+    repositories {
+        maven { url 'https://maven.fabric.io/public' }
+    }
+
+    dependencies {
+        classpath 'io.fabric.tools:gradle:1.+'
+    }
+}
 
 apply plugin: 'com.android.application'
+apply plugin: 'io.fabric'
+
+repositories {
+    maven { url 'https://maven.fabric.io/public' }
+}
+
 
 apply plugin: 'android-apt'
 
@@ -57,4 +72,7 @@ dependencies {
     compile 'com.jakewharton:butterknife:8.4.0'
     compile 'pro.piwik.sdk:piwik-sdk:1.0.0'
     apt 'com.jakewharton:butterknife-compiler:8.4.0'
+    compile('com.crashlytics.sdk.android:crashlytics:2.9.3@aar') {
+        transitive = true;
+    }
 }

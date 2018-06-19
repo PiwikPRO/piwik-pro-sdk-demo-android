@@ -82,7 +82,7 @@
 
             <CheckBox
                 android:id="@+id/dryRunCheckbox"
-                android:layout_width="wrap_content"
+                android:layout_width="277dp"
                 android:layout_height="wrap_content"
                 android:layout_column="0"
                 android:layout_span="3"
@@ -139,7 +139,7 @@
         </TableRow>
 
         <TableRow
-            android:layout_width="fill_parent"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="5dp">
 
@@ -147,6 +147,9 @@
                 android:id="@+id/hostInput"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_column="0"
+                android:layout_span="3"
+                android:layout_weight="1"
                 android:hint="host" />
 
         </TableRow>
@@ -158,8 +161,11 @@
 
             <EditText
                 android:id="@+id/siteIdInput"
-                android:layout_width="match_parent"
+                android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
+                android:layout_column="0"
+                android:layout_span="3"
+                android:layout_weight="1"
                 android:hint="site Id" />
 
         </TableRow>
@@ -171,12 +177,14 @@
 
             <Button
                 android:id="@+id/updateHostSiteIdBtn"
-                android:layout_width="match_parent"
+                android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
+                android:layout_column="0"
+                android:layout_span="3"
+                android:layout_weight="1"
                 android:text="update Host and Site Id" />
 
         </TableRow>
-
     </TableLayout>
 
     <Button

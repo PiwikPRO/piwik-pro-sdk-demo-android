@@ -81,19 +81,19 @@ public class SettingsActivity extends Activity {
         });
 
         // dispatch interval
-        EditText input = (EditText) findViewById(R.id.dispatchIntervallInput);
-        ((PiwikApplication) getApplication()).getTracker().setDispatchInterval(30000);
-        input.setText(Long.toString(
+        EditText inputDispatchInterval = (EditText) findViewById(R.id.dispatchIntervallInput);
+        String text = Long.toString(
                 ((PiwikApplication) getApplication()).getTracker().getDispatchInterval() / 1000
-        ));
-        input.addTextChangedListener(
+        );
+        inputDispatchInterval.setText(text);
+        inputDispatchInterval.addTextChangedListener(
                 new TextWatcher() {
                     @Override
                     public void onTextChanged(CharSequence charSequence, int i, int i2, int i3) {
                         try {
                             int interval = Integer.valueOf(charSequence.toString().trim());
                             ((PiwikApplication) getApplication()).getTracker()
-                                    .setDispatchInterval(interval / 1000);
+                                    .setDispatchInterval(interval * 1000);
                         } catch (NumberFormatException e) {
                             Timber.d("not a number: %s", charSequence.toString());
                         }
@@ -110,12 +110,14 @@ public class SettingsActivity extends Activity {
 
         );
 
+
         //session Timeout Input
-        input = (EditText) findViewById(R.id.sessionTimeoutInput);
-        input.setText(Long.toString(
+
+        EditText inputSessionTimeout = (EditText) findViewById(R.id.sessionTimeoutInput);
+        inputSessionTimeout.setText(Long.toString(
                 (((PiwikApplication) getApplication()).getTracker().getSessionTimeout() / 60000)
         ));
-        input.addTextChangedListener(
+        inputSessionTimeout.addTextChangedListener(
                 new TextWatcher() {
                     @Override
                     public void onTextChanged(CharSequence charSequence, int i, int i2, int i3) {
@@ -123,9 +125,8 @@ public class SettingsActivity extends Activity {
                             int timeoutMin = Integer.valueOf(charSequence.toString().trim());
                             timeoutMin = Math.abs(timeoutMin);
                             ((PiwikApplication) getApplication()).getTracker()
-                                    .setSessionTimeout(timeoutMin * 60);
+                                    .setSessionTimeout(timeoutMin * 60000);
                         } catch (NumberFormatException e) {
-                            ((EditText) settingsActivity.findViewById(R.id.sessionTimeoutInput)).setText("30");
                             Timber.d("not a number: %s", charSequence.toString());
                         }
                     }
@@ -141,11 +142,11 @@ public class SettingsActivity extends Activity {
 
         );
 
-        // host input
+        // host inputSessionTimeout
         final EditText inputHost = (EditText) findViewById(R.id.hostInput);
         inputHost.setText(((DemoApp) getApplication()).getHost());
 
-        //  siteId input
+        //  siteId inputSessionTimeout
         final EditText inputSiteId = (EditText) findViewById(R.id.siteIdInput);
         inputSiteId.setText(((DemoApp) getApplication()).getSiteId());
 
@@ -160,11 +161,27 @@ public class SettingsActivity extends Activity {
                     inputHost.setError("Invalid host pattern");
                     return;
                 }
+
                 // todo add siteId check
                 ((DemoApp) getApplication()).setHost(host);
                 ((DemoApp) getApplication()).setSiteId(siteId);
                 ((DemoApp) getApplication()).getNewTracker();
+
+                try {
+                    int interval = Integer.valueOf(((EditText) findViewById(R.id.dispatchIntervallInput)).getText().toString().trim());
+                    ((PiwikApplication) getApplication()).getTracker().setDispatchInterval(interval * 1000);
+                } catch (NumberFormatException e) {
+                    Timber.d("not a number: %s", ((EditText) findViewById(R.id.dispatchIntervallInput)).getText().toString());
+                }
+                try {
+                    int session = Integer.valueOf(((EditText) findViewById(R.id.sessionTimeoutInput)).getText().toString().trim());
+                    ((PiwikApplication) getApplication()).getTracker().setSessionTimeout(session * 60000);
+                } catch (NumberFormatException e) {
+                    Timber.d("not a number: %s", ((EditText) findViewById(R.id.sessionTimeoutInput)).getText().toString());
+                }
+
                 refreshUI(SettingsActivity.this);
+
 
             }
         });

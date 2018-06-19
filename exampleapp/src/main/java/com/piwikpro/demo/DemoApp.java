@@ -7,9 +7,14 @@
 
 package com.piwikpro.demo;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Build;
 import android.os.StrictMode;
 
+import com.crashlytics.android.Crashlytics;
+
+import io.fabric.sdk.android.Fabric;
 import pro.piwik.sdk.Tracker;
 import pro.piwik.sdk.TrackerConfig;
 import pro.piwik.sdk.extra.DownloadTracker;
@@ -19,20 +24,30 @@ import timber.log.Timber;
 
 public class DemoApp extends PiwikApplication {
 
-    private String host = "https://demoaccess.piwik.pro/";
-    private String siteId = "3e7e6ab9-d605-42b0-ac1b-cdf5bb5e216f";
+    private final String ORIGIN_HOST = "https://demoaccess.piwik.pro/";
+    private final String ORIGIN_SITEID = "3e7e6ab9-d605-42b0-ac1b-cdf5bb5e216f";
+    public static final String KEY_HOST = "piwik_host";
+    public static final String KEY_SITEID = "piwik_siteid";
 
     //Not Overridden!!!  mPiwikDemoTracker is a new object for that allows change Host and siteId during app works
     private Tracker mPiwikDemoTracker;
+    private String host;
+    private String siteId;
 
     @Override
     public TrackerConfig onCreateTrackerConfig() {
+        if (host == null || siteId == null) {
+            SharedPreferences sharedPreferences = getSharedPreferences(DemoApp.class.getName(), Context.MODE_PRIVATE);
+            host = sharedPreferences.getString(KEY_HOST, ORIGIN_HOST);
+            siteId = sharedPreferences.getString(KEY_SITEID, ORIGIN_SITEID);
+        }
         return TrackerConfig.createDefault(host, siteId);
     }
 
     @Override
     public void onCreate() {
         super.onCreate();
+        Fabric.with(this, new Crashlytics());
         StrictMode.setVmPolicy(new StrictMode.VmPolicy.Builder()
                 .detectAll()
                 .penaltyLog()
@@ -78,8 +93,7 @@ public class DemoApp extends PiwikApplication {
 
     //Not Overridden!!! mPiwikDemoTracker is a new object for that allows change Host and siteId during app works
     public synchronized Tracker getTracker() {
-        if (mPiwikDemoTracker == null)
-            mPiwikDemoTracker = getPiwik().newTracker(onCreateTrackerConfig());
+        if (mPiwikDemoTracker == null) getNewTracker();
         return mPiwikDemoTracker;
     }
 
@@ -95,6 +109,7 @@ public class DemoApp extends PiwikApplication {
 
     public void setHost(String host) {
         this.host = host;
+        getSharedPreferences(DemoApp.class.getName(), Context.MODE_PRIVATE).edit().putString(KEY_HOST, host).commit();
     }
 
     public String getSiteId() {
@@ -103,6 +118,7 @@ public class DemoApp extends PiwikApplication {
 
     public void setSiteId(String siteId) {
         this.siteId = siteId;
+        getSharedPreferences(DemoApp.class.getName(), Context.MODE_PRIVATE).edit().putString(KEY_SITEID, siteId).commit();
     }
 
 

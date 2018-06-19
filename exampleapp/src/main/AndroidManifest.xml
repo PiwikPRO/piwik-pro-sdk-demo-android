@@ -44,6 +44,9 @@
                 android:value="com.piwikpro.demo.DemoActivity" />
         </activity>
 
+        <meta-data
+            android:name="io.fabric.ApiKey"
+            android:value="47b91b6b6ea6e860050690af6577fe99168c120d" />
     </application>
 
 </manifest>
