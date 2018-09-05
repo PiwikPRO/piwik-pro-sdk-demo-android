@@ -28,6 +28,11 @@
             android:alwaysRetainTaskState="true"
             android:label="@string/title_activity_datamanager"
             android:launchMode="singleInstance" />
+          <activity
+            android:name="com.piwikpro.demo.DeviceIDActivity"
+            android:alwaysRetainTaskState="true"
+            android:label="@string/title_activity_userid"
+            android:launchMode="singleInstance" />
         <activity
             android:name="com.piwikpro.demo.CheckAudienceActivity"
             android:alwaysRetainTaskState="true"

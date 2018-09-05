@@ -240,12 +240,21 @@
             android:text="Data Manager" />
 
         <Button
-            android:id="@+id/checkAudienceButton"
+            android:id="@+id/deviceIdButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
             android:layout_below="@+id/dataManagerButton"
+            android:text="Device ID" />
+
+        <Button
+            android:id="@+id/checkAudienceButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/deviceIdButton"
             android:text="Check Audience Membership" />
 
     </RelativeLayout>

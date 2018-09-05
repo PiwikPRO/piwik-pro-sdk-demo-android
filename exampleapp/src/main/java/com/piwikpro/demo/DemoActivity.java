@@ -214,6 +214,12 @@ public class DemoActivity extends ActionBarActivity {
         startActivity(new Intent(this, DataManagerActivity.class));
     }
 
+    @OnClick(R.id.deviceIdButton)
+    void  onDeviceIdButton(View view){
+        startActivity(new Intent(this, DeviceIDActivity.class));
+    }
+
+
     @OnClick(R.id.checkAudienceButton)
     void onCheckAudienceActivityButton(View view) {
         startActivity(new Intent(this, CheckAudienceActivity.class));
